@@ -10,15 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_180447) do
+ActiveRecord::Schema.define(version: 2021_02_04_161327) do
 
   create_table "babies", force: :cascade do |t|
     t.string "name"
+    t.integer "age"
+  end
+
+  create_table "schedules", force: :cascade do |t|
     t.string "feeding_type"
     t.datetime "start_time"
     t.datetime "end_time"
     t.decimal "total_amount", precision: 6, scale: 2
     t.integer "user_id"
+    t.integer "baby_id"
   end
 
   create_table "users", force: :cascade do |t|

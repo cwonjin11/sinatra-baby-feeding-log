@@ -10,8 +10,10 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    # Pry.start
     if logged_in?
-      redirect to('/log')
+      # erb :welcome
+      redirect to('/logs')
     else
       erb :welcome
     end
