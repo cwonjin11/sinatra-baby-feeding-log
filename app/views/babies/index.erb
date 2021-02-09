@@ -1,1 +1,20 @@
-<p>Welcome <b>
+<p>Welcome <b><%= current_user.username%></b>! </p>
+
+<h1>View all babies you have</h1>
+
+<ul>
+<% if @babies.size > 0 %>
+    <% @babies.each do |baby| %>
+        <% if baby.user_id == current_user.id %>    
+        <li><a href="babies/<%= baby.id %>"> Name:<%= baby.name %>,  Age:<%= baby.age %> years old </a></li>
+        <% end %>
+    <% end %>
+    <a href="/babies/new">Create a new one here</a>
+    <% else %>
+<p>You don't have any babies! <a href="/babies/new">Create a new one here</a>.</p>
+<% end %>
+
+</ul>
+
+
+

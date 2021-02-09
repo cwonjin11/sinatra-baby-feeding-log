@@ -6,3 +6,65 @@ class User < ActiveRecord::Base
   
   end
   
+
+
+
+baby index 
+
+  <% if @babies.size > 0 %>
+    <% @babies.each do |baby| %>
+      <% if baby.user_id == @current_user.id %>
+        <li><a href="/babies/<%= baby.id %>"><b><%= baby.name %></b></a></li>
+        <br></br>
+      <% end %>
+    <% end %>
+    <a href="/babies/new">Create a new one here</a>
+  <% else %>
+    <p>You don't have any babies! <a href="/babies/new">Create a new one here</a>.</p>
+  <% end %>
+</ul>
+
+
+
+babies_controller
+ get '/babies/new' do
+        if logged_in?
+          @current_user
+          erb :'babies/new'
+        else
+          redirect to('/login')
+        end
+      end
+
+
+user_controller
+      get '/logout' do
+        if logged_in?
+            session.clear
+            redirect '/'
+          # @user = current_user
+          # @user = nil
+          # session.destroy
+          # redirect '/'
+        else
+          redirect '/'
+        end
+
+      end
+
+    post '/babies' do
+       
+        if logged_in?
+          @baby = current_user.babies.build(params)
+ 
+          if !@baby.save
+            @errors = @baby.errors.full_messages
+            erb :'/babies/new'
+            
+          else
+            redirect to('/babies')
+          end
+        else
+          redirect to('/login')
+        end
+    end  
