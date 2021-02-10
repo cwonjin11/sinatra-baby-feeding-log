@@ -1,0 +1,34 @@
+<h1>Baby's Feeding Details</h1>
+
+
+
+
+<h2><%= @baby.name %>, <%= @baby.age %> yrs</h2>
+<ul>
+<br>
+<% if @schedules.size > 0 %>
+<% @schedules.each do |scheme| %>
+  <% if scheme.baby_id == @baby.id %>
+<p><b>Feeding Type:</b> <%= scheme.feeding_type %></p>
+<p><b>Start_time:</b> <%= scheme.start_time %></p>
+<p><b>End_time:</b> <%= scheme.end_time %></p>
+<p><b>Total amount:</b> <%= scheme.total_amount %> oz </p>
+   <% end %>
+  <% end %>
+<br>
+<a href="/babies/<%= @baby.id %>/edit">Add Baby Logs</a>
+
+<% else %>
+<p>No logs for this baby. <a href="/babies/<%= @baby.id %>/edit">Add Baby Logs </a>.</p>
+<% end %>
+</ul>
+
+<form action="/babies/<%= @baby.id %>/delete" method="POST">
+ <br>
+  <input type="hidden" id="hidden" name="_method" value="DELETE"/>
+  <input type="submit" value="Delete Baby">
+</form>
+
+<br>
+
+<a href="/babies">View All babies</a>

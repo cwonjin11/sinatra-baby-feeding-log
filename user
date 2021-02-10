@@ -68,3 +68,19 @@ user_controller
           redirect to('/login')
         end
     end  
+
+
+
+      <label for="feeding_type">Feeding Type: </label>
+  <input type="string" name="feeding_type" id="feeding_type" value="<%= @scheme.feeding_type %>"/>
+
+
+<% @schedules.each do |scheme| %>
+  <% if scheme.baby_id == baby.id %>
+    <% end %>
+  <% end %>
+  
+
+
+<% @schedules.each do |scheme| %>
+  <% if scheme.baby_id == @baby.id %>
