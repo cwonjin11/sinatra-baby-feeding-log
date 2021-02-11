@@ -90,3 +90,22 @@ user_controller
     <label for="feeding_type">Feeding type</label>
     <input type="string" name="feeding_type" id="feeding_type" value="<%= @scheme.feeding_type %>"><br>
     </div>
+
+        # binding.pry
+    # @baby = Baby.find(params[:id])
+    # @scheme = Schedule.find_by([baby_id: @baby.id])
+    
+    # binding.pry
+
+
+
+        get '/schedules/:id' do 
+       
+        @scheme = Schedule.find(params[:id])
+       
+          erb :'schedules/new'
+          if logged_in? && @baby.user_id == current_user.id
+        else
+          redirect to('/login')
+        end
+      end  

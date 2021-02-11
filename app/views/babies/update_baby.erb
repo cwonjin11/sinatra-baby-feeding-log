@@ -1,4 +1,4 @@
-<h1> Update <%= @baby.name %>, <%=@baby.age%> yrs</h1>
+<h1> Input Baby's Logs <%= @baby.name %>, <%=@baby.age%> yrs</h1>
  <br>
 
  <% if @errors %>
@@ -6,6 +6,7 @@
     <p style="color: red;"><%= error %></p>
   <% end %>
 <% end %>
+
 
 
 <form action="/babies/<%= @baby.id %>" method="POST">

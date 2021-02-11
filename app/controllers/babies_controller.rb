@@ -47,6 +47,9 @@ class BabiesController < ApplicationController
     @baby = Baby.find(params[:id])
     if logged_in? && @baby.user_id == current_user.id
       @schedules = Schedule.all
+      # @scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
+      # @scheme = Schedule.find(params[:id])
+      # binding.pry
       erb :'babies/show'
 
     else
@@ -76,10 +79,11 @@ class BabiesController < ApplicationController
   patch '/babies/:id' do
     @baby = Baby.find(params[:id])
     @baby.name = params[:name]
+    @baby.age = params[:age]
     @schedules = Schedule.all
-    scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], 
+    @scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], 
       start_time: params["start_time"], end_time: params["end_time"], baby_id: @baby.id, user_id: current_user.id )
-    scheme.save
+    @scheme.save
     
     # binding.pry
    
@@ -105,5 +109,9 @@ class BabiesController < ApplicationController
     end
   end
   
+
+
+
+
 
 end
