@@ -84,3 +84,9 @@ user_controller
 
 <% @schedules.each do |scheme| %>
   <% if scheme.baby_id == @baby.id %>
+
+
+      <div>
+    <label for="feeding_type">Feeding type</label>
+    <input type="string" name="feeding_type" id="feeding_type" value="<%= @scheme.feeding_type %>"><br>
+    </div>

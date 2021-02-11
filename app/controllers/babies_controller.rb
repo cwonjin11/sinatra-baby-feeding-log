@@ -64,6 +64,7 @@ class BabiesController < ApplicationController
         # @scheme = Schedule.find(params[:baby_id], params[:id])
         # @schedules = Schedule.all
         @scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
+    
         erb :'babies/update_baby'
         # binding.pry
       else
@@ -76,8 +77,10 @@ class BabiesController < ApplicationController
     @baby = Baby.find(params[:id])
     @baby.name = params[:name]
     @schedules = Schedule.all
-    @scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
-    @scheme.save
+    scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], 
+      start_time: params["start_time"], end_time: params["end_time"], baby_id: @baby.id, user_id: current_user.id )
+    scheme.save
+    
     # binding.pry
    
     if !@baby.save
@@ -87,9 +90,11 @@ class BabiesController < ApplicationController
       redirect to("/babies/#{@baby.id}")
     end
   end  
+ 
 
   
   delete '/babies/:id/delete' do
+    #  binding.pry
     @baby = Baby.find(params[:id])
     if logged_in? && @baby.user_id == current_user.id
     # if logged_in? && @baby.user == current_user
@@ -99,5 +104,6 @@ class BabiesController < ApplicationController
       redirect to('/login')
     end
   end
+  
 
 end

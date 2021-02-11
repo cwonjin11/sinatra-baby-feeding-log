@@ -1,18 +1,19 @@
 <h1>Baby's Feeding Details</h1>
 
-
-
-
 <h2><%= @baby.name %>, <%= @baby.age %> yrs</h2>
 <ul>
 <br>
 <% if @schedules.size > 0 %>
 <% @schedules.each do |scheme| %>
   <% if scheme.baby_id == @baby.id %>
-<p><b>Feeding Type:</b> <%= scheme.feeding_type %></p>
-<p><b>Start_time:</b> <%= scheme.start_time %></p>
-<p><b>End_time:</b> <%= scheme.end_time %></p>
-<p><b>Total amount:</b> <%= scheme.total_amount %> oz </p>
+<li><b>Feeding Type:</b> <a href="/babies/<%= @baby.id %>"><%= scheme.feeding_type %> </a> </li>
+
+
+<b>Start_time:</b> <%= scheme.start_time %>
+<b>End_time:</b> <%= scheme.end_time %>
+<b>Total amount:</b> <%= scheme.total_amount %> oz 
+<a href="/babies/<%= @baby.id %>/edit">edit Baby Logs</a>
+   <br><br>
    <% end %>
   <% end %>
 <br>
