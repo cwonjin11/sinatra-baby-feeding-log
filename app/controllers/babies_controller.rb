@@ -1,10 +1,11 @@
 class BabiesController < ApplicationController
   get '/babies' do
-      if logged_in?
+      if logged_in? 
         @current_user = User.find(session[:user_id])
         @babies = Baby.all
 
         erb :'babies/index'
+        # binding.pry
       else
         redirect '/login'
       end
@@ -42,6 +43,9 @@ class BabiesController < ApplicationController
       end
   end  
 
+ 
+
+
   get '/babies/:id' do
     # binding.pry 
     @baby = Baby.find(params[:id])
@@ -66,7 +70,8 @@ class BabiesController < ApplicationController
         @user = User.find(session[:user_id])
         # @scheme = Schedule.find(params[:baby_id], params[:id])
         # @schedules = Schedule.all
-        @scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
+        @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
+          end_time: params["end_time"], total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
     
         erb :'babies/update_baby'
         # binding.pry
@@ -78,8 +83,8 @@ class BabiesController < ApplicationController
 
   patch '/babies/:id' do
     @baby = Baby.find(params[:id])
-    @baby.name = params[:name]
-    @baby.age = params[:age]
+    # @baby.name = params[:name]
+    # @baby.age = params[:age]
     @schedules = Schedule.all
     @scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], 
       start_time: params["start_time"], end_time: params["end_time"], baby_id: @baby.id, user_id: current_user.id )
@@ -110,6 +115,22 @@ class BabiesController < ApplicationController
   end
   
 
+  get '/babies/:name' do
+    @baby = Baby.find(params[:name])
+      erb :'/babies/edit_baby'
+  end
+
+  get '/babies/:name/edit' do
+    binding.pry
+    if logged_in?
+    @baby = Baby.find(params[:name])
+    # binding.pry
+    #   if logged_in? && @baby.user_id == current_user.id
+        erb :'/babies/edit_baby'
+      else
+        redirect to('/login')
+      end
+  end
 
 
 

@@ -109,3 +109,12 @@ user_controller
           redirect to('/login')
         end
       end  
+
+
+
+       <div>
+    <label for="name">Name</label>
+    <input type="string" name="name" id="name" value="<%= @baby.name %>"><br>
+    <label for="age">Age</label>
+    <input type="number" name="age" id="age" min="0" step="0" max="5"value="<%= @baby.age %>"><br>
+    </div>
