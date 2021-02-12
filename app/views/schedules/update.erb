@@ -1,0 +1,54 @@
+<h1> Update Logs </h1>
+<h2> Name: <%= @baby.name %><br> Age: <%=@baby.age%> </h2>
+ <br>
+
+ <% if @errors %>
+  <% @errors.each do |error| %>
+    <p style="color: red;"><%= error %></p>
+  <% end %>
+<% end %>
+
+
+
+<form action="/schedules/<%= @scheme.id %>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="patch"/>
+
+
+   <div>
+
+    <label for="feeding_type">Feeding type</label>
+    <select name="feeding_type" id="feeding_type">
+      <option value="formula">formula</option>
+      <option value="breast feeding">breast feeding</option>
+      <option value="solid food">solid food</option>
+    </select>
+  </div>
+
+    <div>
+    <label for="start_time">Start time</label>
+    <input type="datetime-local" name="start_time" id="start_time" value="<%= @scheme.start_time %>"><br>
+    </div>
+    
+     <div>
+    <label for="end_time">End time</label>
+    <input type="datetime-local" name="end_time" id="end_time" value="<%= @scheme.end_time %>"><br>
+    </div>
+
+    <div>
+    <label for="total_amount">Total amount</label>
+    <input type="number" name="total_amount" id="total_amount" min="0.01" step="0.01" max="2000.00" value="<%= @scheme.total_amount %>"> oz <br>
+    </div>
+
+
+  <br>
+
+<input type="submit" value="Save">
+
+</form>
+
+<form action="/schedules/<%= @scheme.id %>/delete" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="DELETE"/>
+  <input type="submit" value="Delete">
+</form>
+
+
