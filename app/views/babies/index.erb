@@ -7,7 +7,7 @@
 <% if @babies.size > 0 %>
     <% @babies.each do |baby| %>
         <% if baby.user_id == current_user.id %>    
-        <li><a href="babies/<%= baby.id %>"> <%= baby.name %> (<%= baby.age %> years) </a></li>
+        <li><a href="babies/<%= baby.id %>"> Name: <%= baby.name %>, (Age <%= baby.age %>) </a></li>
         <br>
         <% end %>
     <% end %>
