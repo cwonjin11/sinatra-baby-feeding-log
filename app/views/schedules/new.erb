@@ -1,7 +1,6 @@
-<h1> Input Baby's Logs </h1>
+<h1> Add Baby's Logs </h1>
 <h2>Name: <%= @baby.name %> <br> Age: <%= @baby.age %> </h2>
  <br>
-
 
  <% if @errors %>
   <% @errors.each do |error| %>
@@ -9,7 +8,8 @@
   <% end %>
 <% end %>
 
-<form action="/babies/<%= @baby.id %>" method="POST">
+
+<form action="/babies/<%= @baby.id %>" method="get">
   <input type="hidden" id="hidden" name="_method" value="patch"/>
    <div>
     <label for="feeding_type">feeding_type</label>
@@ -40,5 +40,3 @@
 
 <input type="submit" value="Save">
 </form>
-
-

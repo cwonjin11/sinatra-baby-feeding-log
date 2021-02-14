@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_02_08_162747) do
     t.string "feeding_type"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.decimal "total_amount", precision: 6, scale: 2
+    t.decimal "total_amount" precision: 6, scale: 2,
     t.integer "user_id"
     t.integer "baby_id"
   end

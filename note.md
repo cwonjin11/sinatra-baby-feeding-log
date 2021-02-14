@@ -118,3 +118,35 @@ user_controller
     <label for="age">Age</label>
     <input type="number" name="age" id="age" min="0" step="0" max="5"value="<%= @baby.age %>"><br>
     </div>
+
+
+
+
+     post '/babies/:name' do
+    @baby = Baby.find(params[:name])
+      erb :'/babies/edit_baby'
+      # binding.pry
+  end
+
+  post '/babies/:name/edit' do
+    @baby = Baby.new(name: params["name"], age: params["age"], user_id: current_user.id)
+      erb :'/babies/edit_baby'
+      # binding.pry
+      # else
+      #   redirect to('/login')
+      # end
+  end
+
+  patch '/babies/:name' do
+    @babies = Baby.all
+    @baby = Baby.new(params[:name], params[:age])
+    erb :'/babies/edit_baby'
+ 
+  end  
+
+
+
+<form action="/babies/<%= @baby.id %>/edit" >
+  <input type="hidden" id="hidden" name="_method" value="edit"/>
+  <input type="submit" value="Edit Baby">
+</form>

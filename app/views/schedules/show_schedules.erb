@@ -1,14 +1,14 @@
+
 <h1>Baby's Feeding Details</h1>
 
 <h2>Name: <%= @baby.name %> <br> Age: <%= @baby.age %> 
-<a href="/babies/<%= @baby.id%>/edit">Edit baby</a>
+<a href="/babies/<%= @baby.id %>/edit">Edit baby</a>
 
 <form action="/babies/<%= @baby.id %>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE"/>
   <input type="submit" value="Delete Baby">
 </form>
 </h2>
-
 
 
 <ul>
@@ -25,13 +25,11 @@
    <% end %>
   <% end %>
 <br>
-<a href="/schedules/<%= @baby.id %>/new">Add Baby Logs</a>
+<br><br>
+<a href="/schedules/<%= @baby.id %>/new">Add Baby Logs</a><br>
 <a href="/babies">View All babies</a>
 <% else %>
 <p>No logs for this baby. <a href="/babies/<%= @baby.id %>/edit">Add Baby Logs </a>.</p>
 <% end %>
 
 </ul>
-
-
-

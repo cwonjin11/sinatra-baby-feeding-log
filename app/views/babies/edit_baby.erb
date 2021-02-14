@@ -1,1 +1,19 @@
-<p>hello world</p>
+<h1>Edit your baby</h1>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p style="color: red;"><%= error %></p>
+  <% end %>
+<% end %>
+
+<form action="/babies/<%= @baby.id%>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="patch"/>
+  <label for="name">Name: </label>
+   <input type="text" name="name" id="name" value="<%= @baby.name %>">
+
+  <label for="age">Age: </label>
+    <input type="integer" name="age" id="age" value="<%= @baby.age %>">
+    
+
+  <input type="submit" value="Save">
+</form>

@@ -10,14 +10,14 @@
 
 
 
-<form action="/schedules/<%= @scheme.id %>" method="POST">
+<form action="/schedules/<%= @scheme.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch"/>
 
 
    <div>
 
     <label for="feeding_type">Feeding type</label>
-    <select name="feeding_type" id="feeding_type">
+    <select name="feeding_type" id="feeding_type" value="<%= @scheme.feeding_type%>">
       <option value="formula">formula</option>
       <option value="breast feeding">breast feeding</option>
       <option value="solid food">solid food</option>
