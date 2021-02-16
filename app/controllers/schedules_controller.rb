@@ -16,6 +16,7 @@ class SchedulesController < ApplicationController
         # @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
         #     end_time: params["end_time"], total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
         @scheme = Schedule.find(params[:id])
+        # @scheme = Schedule.new(params)
         # @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
         #     end_time: params["end_time"], total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
         # @baby = Baby.find(params[:id])
@@ -37,20 +38,40 @@ class SchedulesController < ApplicationController
         end
     end
 
-    get '/schedules/:id/new' do
+    get '/babies/:id/schedules/new' do
+
+        # binding.pry
+        # # @scheme = Schedule.find(params[:id])
         # @scheme = Schedule.find(params[:id])
         @baby = Baby.find(params[:id])
         # @baby = Baby.find(@scheme.baby_id)
-        # binding.pry
+        # # binding.pry
         if logged_in? 
             # @user = User.find(session[:user_id])
             # @baby = Baby.find(@scheme.baby_id)
             # @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
             #     end_time: params["end_time"], total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
-            @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
-                end_time: params["end_time"], total_amount: params["total_amount"], baby_id: params["baby_id"], user_id: params["user_id"])
+            # @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
+            #     end_time: params["end_time"], total_amount: params["total_amount"], baby_id: params["baby_id"], user_id: params["user_id"])
         erb :'schedules/new'
 
+        end
+    end
+
+    post '/babies/:id/schedules' do
+        # binding.pry
+        if logged_in?
+            @baby = Baby.find(params[:id])
+            @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
+                    end_time: params["end_time"], total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id)
+            #   @errors = @baby.errors.full_messages
+            #   erb :'/babies/new'
+            @scheme.save
+            
+              redirect to "/babies/#{@baby.id}" 
+
+        else
+            redirect to('/login')
         end
     end
     
@@ -67,7 +88,7 @@ class SchedulesController < ApplicationController
     #       end
     # end
 
-    patch '/schedules/:id' do
+    patch '/babies/:baby_id/schedules/:id' do
         # binding.pry
         @scheme = Schedule.find(params[:id])
         @baby = Baby.find(@scheme.baby_id)
@@ -80,14 +101,14 @@ class SchedulesController < ApplicationController
           @errors = @scheme.errors.full_messages
           erb :'/schedules/update'
         else
-          redirect to("/schedules/#{@scheme.id}")
+          redirect to("/babies/#{@baby.id}")
         end
     end  
      
 
 
 
-    get '/schedules/:id/update' do
+    get '/babies/:baby_id/schedules/:id/update' do
     
         # binding.pry
     
@@ -95,7 +116,7 @@ class SchedulesController < ApplicationController
         if logged_in? 
             @user = User.find(session[:user_id])
             @scheme = Schedule.find(params[:id])
-            @baby = Baby.find(@scheme.baby_id)
+            @baby = Baby.find(params[:baby_id])
         
         erb :'/schedules/update'
         else

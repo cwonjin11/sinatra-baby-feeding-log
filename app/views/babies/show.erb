@@ -21,7 +21,7 @@ babies/show.erb
     <b>End:</b> <%= scheme.end_time %><br>
     <b>Feeding Type:</b> <%= scheme.feeding_type %>
     <b>Total amount:</b> <%= scheme.total_amount %> oz <br>
-    <a href="/schedules/<%= scheme.id %>/update">Update Baby Logs</a>
+    <a href="/babies/<%=@baby.id%>/schedules/<%= scheme.id %>/update">Update Baby Logs</a>
    <br><br>
    <% end %>
   <% end %>
@@ -32,7 +32,7 @@ babies/show.erb
 
 <br>
 
-<a href="/schedules/<%= @baby.id %>/new">Add Baby Logs</a>
+<a href="/babies/<%= @baby.id %>/schedules/new">Add Baby Logs</a>
 
 <a href="/babies">View All babies</a>
 

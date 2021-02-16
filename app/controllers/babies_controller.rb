@@ -51,11 +51,11 @@ class BabiesController < ApplicationController
       # @scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
       # @scheme = Schedule.find(params[:id])
       # binding.pry
-      @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
-        end_time: params["end_time"], total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
-  
+      # @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
+      #   end_time: params["end_time"], total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id )
+      # @scheme = Schedule.find(params[:id])
       erb :'babies/show'
-      # binding.pry
+     
     else
       redirect to('/login')
     end
