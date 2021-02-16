@@ -1,5 +1,6 @@
+"schedules/new.erb"
 <h1> Add Baby's Logs </h1>
-<h2>Name: <%= @baby.name %> <br> Age: <%= @baby.age %> </h2>
+<h2> Name: <%= @baby.name %> <br> Age: <%=@baby.age %> </h2>
  <br>
 
  <% if @errors %>
@@ -7,10 +8,10 @@
     <p style="color: red;"><%= error %></p>
   <% end %>
 <% end %>
+<form action="/schedules/<%= @scheme.baby_id %>" >
 
-
-<form action="/babies/<%= @baby.id %>" method="get">
-  <input type="hidden" id="hidden" name="_method" value="patch"/>
+<%#<form action="/schedules/<%= @scheme.id %> 
+  <%# <input type="hidden" id="hidden" name="_method" value="patch"/> %>
    <div>
     <label for="feeding_type">feeding_type</label>
     <select name="feeding_type" id="feeding_type">

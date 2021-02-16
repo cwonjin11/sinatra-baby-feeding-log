@@ -1,3 +1,4 @@
+babies/show.erb
 <h1>Baby's Feeding Details</h1>
 
 <h2>Name: <%= @baby.name %> <br> Age: <%= @baby.age %> 
@@ -24,12 +25,17 @@
    <br><br>
    <% end %>
   <% end %>
-<br>
-<a href="/schedules/<%= @baby.id %>/new">Add Baby Logs</a>
-<a href="/babies">View All babies</a>
-<% else %>
-<p>No logs for this baby. <a href="/babies/<%= @baby.id %>/edit">Add Baby Logs </a>.</p>
+  <%else%>
+    <p>No logs for this baby. <a href="/schedules/<%= scheme.id %>/new">Add Baby Logs </a>.</p>
+ 
 <% end %>
+
+<br>
+
+<a href="/schedules/<%= @baby.id %>/new">Add Baby Logs</a>
+
+<a href="/babies">View All babies</a>
+
 
 </ul>
 

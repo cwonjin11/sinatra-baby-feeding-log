@@ -150,3 +150,11 @@ user_controller
   <input type="hidden" id="hidden" name="_method" value="edit"/>
   <input type="submit" value="Edit Baby">
 </form>
+
+
+<% else %>
+<p>No logs for this baby. <a href="/babies/<%= @baby.id %>/edit">Add Baby Logs </a>.</p>
+<% end %>
+\
+
+<form action="/schedules/<%= @scheme.id %>" >
