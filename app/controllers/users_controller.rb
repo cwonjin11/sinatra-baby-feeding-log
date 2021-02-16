@@ -15,8 +15,6 @@ class UsersController < ApplicationController
         @errors = @user.errors.full_messages
         erb :'users/create_user'
     else 
-        @user.save
-        puts params
         session[:user_id] = @user.id
         redirect '/babies'
     end

@@ -1,11 +1,9 @@
 class BabiesController < ApplicationController
   get '/babies' do
-      if logged_in? 
-        @current_user = User.find(session[:user_id])
+    if logged_in? 
+        # @current_user = User.find(session[:user_id])
         @babies = Baby.all
-
         erb :'babies/index'
-        # binding.pry
       else
         redirect '/login'
       end
@@ -84,7 +82,7 @@ class BabiesController < ApplicationController
         # @scheme = Schedule.find(params[:baby_id], params[:id])
         # @schedules = Schedule.all
     
-        erb :'babies/edit_baby'
+        erb :'babies/edit'
       else
         redirect to('/login')
       end
@@ -112,7 +110,7 @@ class BabiesController < ApplicationController
    
     if !@baby.save
       @errors = @baby.errors.full_messages
-      erb :'/babies/edit_baby'
+      erb :'/babies/edit'
     else
       redirect to("/babies/#{@baby.id}")
     end
