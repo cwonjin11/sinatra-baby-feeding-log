@@ -92,26 +92,27 @@ class BabiesController < ApplicationController
 
 
   patch '/babies/:id' do
+    # binding.pry
     @baby = Baby.find(params[:id])
     @baby.name = params[:name]
     @baby.age = params[:age]
     @schedules = Schedule.all
-    @scheme = Schedule.find(params[:id])
+    # @scheme = Schedule.find(params[:id])
     
     # @scheme = Schedule.new(feeding_type: params["feeding_type"],total_amount: params["total_amount"], 
     #   start_time: params["start_time"], end_time: params["end_time"], baby_id: @baby.id, user_id: current_user.id )
-    @scheme.feeding_type = params[:feeding_type]
-    @scheme.start_time = params[:start_time]
-    @scheme.end_time = params[:end_time]
-    @scheme.total_amount = params[:total_amount]
-    # binding.pry
+    # @scheme.feeding_type = params[:feeding_type]
+    # @scheme.start_time = params[:start_time]
+    # @scheme.end_time = params[:end_time]
+    # @scheme.total_amount = params[:total_amount]
+    # # binding.pry
     # @scheme.save
     
     # binding.pry 
    
     if !@baby.save
       @errors = @baby.errors.full_messages
-      erb :'/babies/update_baby'
+      erb :'/babies/edit_baby'
     else
       redirect to("/babies/#{@baby.id}")
     end
