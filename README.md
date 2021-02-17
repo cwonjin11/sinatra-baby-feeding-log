@@ -1,12 +1,11 @@
 # Sinatra Baby Feeding Log
 
-A simple Sinatra-powered web application created to track baby feeding log
+A simple Sinatra-powered web application created to track your baby feeding logs.
 
 This app could be used for:
-* 
-*
-*
-*
+* adding/editing multiple babies with names and ages
+* tracking babies' logs by feeding types, times and amount.
+* updating babies' logs 
 
 This project was created as part of the [Flatiron School's Online Web Developer program](https://flatiron-school.com).
 

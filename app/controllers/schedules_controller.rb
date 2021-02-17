@@ -9,7 +9,6 @@ class SchedulesController < ApplicationController
             @baby = Baby.find(@scheme.baby_id)
                 @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
                 end_time: params["end_time"], total_amount: params["total_amount"], baby_id: params["baby_id"], user_id: params["user_id"] )
-                # binding.pry
             erb :'schedules/show'            
         else
             redirect to('/login')
