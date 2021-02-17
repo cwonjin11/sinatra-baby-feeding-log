@@ -9,18 +9,17 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "feeding_my_baby"
   end
 
+  
   get "/" do
-# binding.pry
     if logged_in?
-      # erb :welcome
       redirect '/babies'
     else
       erb :welcome
     end
   end
 
-  helpers do
 
+  helpers do
     def current_user
       @current_user = User.find(session[:user_id])
     end

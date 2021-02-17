@@ -1,37 +1,38 @@
 class BabiesController < ApplicationController
+  
   get '/babies' do
-      if logged_in? 
-          @babies = Baby.all
-          erb :'babies/index'
-      else
-          redirect '/login'
-      end
+    if logged_in? 
+        @babies = Baby.all
+        erb :'babies/index'
+    else
+        redirect '/login'
+    end
   end
 
+
   get '/babies/new' do
-      if logged_in?
-          # @current_user
-        erb :'babies/new'
-      else
-        redirect to '/login'
-      end
+    if logged_in?
+        # @current_user
+      erb :'babies/new'
+    else
+      redirect to '/login'
+    end
   end
 
 
   post '/babies' do
-      if logged_in?
-        @baby = Baby.new(name: params["name"], age: params["age"], user_id: current_user.id)
-        if !@baby.save
-          @errors = @baby.errors.full_messages
-          erb :'/babies/new'
-        else
-          redirect to "/babies" 
-        end
+    if logged_in?
+      @baby = Baby.new(name: params["name"], age: params["age"], user_id: current_user.id)
+      if !@baby.save
+        @errors = @baby.errors.full_messages
+        erb :'/babies/new'
       else
-        redirect to('/login')
+        redirect to "/babies" 
       end
+    else
+      redirect to('/login')
+    end
   end  
-
 
 
   get '/babies/:id' do
@@ -47,7 +48,6 @@ class BabiesController < ApplicationController
  
 
   get '/babies/:id/edit' do
-
     @baby = Baby.find(params[:id])
       if logged_in? && @baby.user_id == current_user.id
         @baby = Baby.find(params[:id])
@@ -60,12 +60,10 @@ class BabiesController < ApplicationController
 
 
   patch '/babies/:id' do
-
     @baby = Baby.find(params[:id])
     @baby.name = params[:name]
     @baby.age = params[:age]
     @schedules = Schedule.all
-   
       if !@baby.save
         @errors = @baby.errors.full_messages
         erb :'/babies/edit'
@@ -74,7 +72,6 @@ class BabiesController < ApplicationController
       end
   end  
 
- 
 
   delete '/babies/:id/delete' do
     @baby = Baby.find(params[:id])
@@ -85,11 +82,7 @@ class BabiesController < ApplicationController
         redirect to('/login')
       end
   end
+
+
   
-
-
-
-
-
-
 end
