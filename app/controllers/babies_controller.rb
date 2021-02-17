@@ -40,7 +40,6 @@ class BabiesController < ApplicationController
       if logged_in? && @baby.user_id == current_user.id
         @schedules = Schedule.all
         erb :'babies/show'
-      
       else
         redirect to('/login')
       end 
@@ -84,5 +83,5 @@ class BabiesController < ApplicationController
   end
 
 
-  
+
 end

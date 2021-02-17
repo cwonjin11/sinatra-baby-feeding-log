@@ -53,12 +53,14 @@ class SchedulesController < ApplicationController
     end  
      
 
-    get '/babies/:baby_id/schedules/:id/update' do   
+    get '/babies/:baby_id/schedules/:id/update' do  
+        #  binding.pry
         if logged_in? 
             @user = User.find(session[:user_id])
             @scheme = Schedule.find(params[:id])
             @baby = Baby.find(params[:baby_id])
-        
+            # @scheme.feeding_type = params[:feeding_type]
+            @scheme.save
         erb :'/schedules/update'
         else
         redirect to('/login')

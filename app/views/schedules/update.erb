@@ -14,38 +14,33 @@
   <input type="hidden" id="hidden" name="_method" value="patch"/>
 
 
-   <div>
 
     <label for="feeding_type">Feeding type</label>
-    <select name="feeding_type" id="feeding_type" value="<%= @scheme.feeding_type%>">
+    <select name="feeding_type" id="feeding_type" >
+      <option value="<%= @scheme.feeding_type%>"selected><%= @scheme.feeding_type%></option>
       <option value="formula">formula</option>
       <option value="breast feeding">breast feeding</option>
       <option value="solid food">solid food</option>
-    </select>
-  </div>
-
-    <div>
+    </select><br>
+<br>
     <label for="start_time">Start time</label>
-    <input type="datetime-local" name="start_time" id="start_time" value="<%= @scheme.start_time %>"><br>
-    </div>
-    
-     <div>
-    <label for="end_time">End time</label>
-    <input type="datetime-local" name="end_time" id="end_time" value="<%= @scheme.end_time %>"><br>
-    </div>
+    <input type="datetime-local" name="start_time" id="start_time" min="2018-01-01T00:00" max="2030-12-31T00:00" value="<%= @scheme.start_time%>"selected value="<%= @scheme.start_time %>"><br>
 
-    <div>
+<br> 
+    <label for="end_time">End time</label>
+    <input type="datetime-local" name="end_time" id="end_time" min="2018-01-01T00:00" max="2030-12-31T00:00"  value="<%= @scheme.end_time %>"><br>
+<br>
     <label for="total_amount">Total amount</label>
     <input type="number" name="total_amount" id="total_amount" min="0.01" step="0.01" max="2000.00" value="<%= @scheme.total_amount %>"> oz <br>
-    </div>
+ 
 
 
-  <br>
+<br>
 
 <input type="submit" value="Save">
 
 </form>
-
+<br>
 <form action="/babies/:baby_id/schedules/<%= @scheme.id %>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE"/>
   <input type="submit" value="Delete">
