@@ -46,7 +46,7 @@
 
 </form>
 
-<form action="/schedules/<%= @scheme.id %>/delete" method="POST">
+<form action="/babies/:baby_id/schedules/<%= @scheme.id %>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE"/>
   <input type="submit" value="Delete">
 </form>

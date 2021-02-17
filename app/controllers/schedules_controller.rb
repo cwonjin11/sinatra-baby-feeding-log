@@ -130,15 +130,19 @@ class SchedulesController < ApplicationController
 
 
 
-  delete '/schedules/:id/delete' do
-    @scheme = Schedule.find(params[:id])
-    # if logged_in?
-      @scheme.destroy
-      @baby = Baby.find(@scheme.baby_id)
-      redirect to("/babies/#{@baby.id}")
-    # else
-    #   redirect to('/login')
-  end
+    delete '/babies/:baby_id/schedules/:id/delete' do
+        # binding.pry
+        @scheme = Schedule.find(params[:id])
+        if logged_in?
+            @scheme.destroy
+            @baby = Baby.find(@scheme.baby_id)
+            redirect to("/babies/#{@baby.id}")
+        else
+            redirect to('/login')
+
+        end
+    end
+
   
 
 
