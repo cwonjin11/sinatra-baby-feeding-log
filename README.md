@@ -5,11 +5,12 @@ A simple Sinatra-powered web application created to track your baby feeding logs
 This app could be used for:
 * adding/editing multiple babies with names and ages
 * tracking babies' logs by feeding types, times and amount.
-* updating babies' logs 
+* busy parents who can not remember all feeding time
+* Following baby's feeding habits everyday
 
 This project was created as part of the [Flatiron School's Online Web Developer program](https://flatiron-school.com).
 
-For more information about how the project was created, visit [my blog]( ) and watch the demo video[demo video]( ).
+For more information about how the project was created, visit [my blog](https://dev.to/cwonjin11/basic-knowledge-of-building-sinatra-crud-app-5em3-temp-slug-4041477?preview=29ec7a42a7e4a3be97db848c7c19ed50dbfb47bf40c9a2ed532d4ab6c02f94ad49a5fff4c8a58aa43e248bb9384387fea36cc5776583f69542f7ccf7 ) and watch the demo video[demo video]( ).
 
 ## Install Instructions
 
@@ -28,15 +29,9 @@ For added security when cloning the repo, generate your own session secret:
 
 **NOTE** Don't use this secret!!! The secret you use should be kept private and out of version control or anywhere else publicly accessible.
 
-<!-- If you'd like to learn more about securing and deploying heroku apps, visit the [Sinatra Heroku Demo App](https://github.com/dakotalmartinez/sinatra-heroku-demo). -->
-
 ## Contributors Guide
 
-<!-- Bug reports and pull requests are welcome on GitHub at https://. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct. -->
-
-## Code of Conduct
-
-<!-- Everyone interacting in the Sinatra Expense Tracker's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kreopelle/sinatra_expense_tracker/blob/master/CODE_OF_CONDUCT.md). -->
+Bug reports and pull requests are welcome on GitHub at https://github.com/cwonjin11/sinatra-baby-feeding-log. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
