@@ -6,10 +6,10 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "feeding_my_baby"
+    set :session_secret, "mybaby_security"
   end
 
-  
+
   get "/" do
     if logged_in?
       redirect '/babies'
