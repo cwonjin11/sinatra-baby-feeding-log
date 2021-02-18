@@ -29,9 +29,14 @@ class SchedulesController < ApplicationController
             @baby = Baby.find(params[:id])
             @scheme = Schedule.new(feeding_type: params["feeding_type"], start_time: params["start_time"], 
                     end_time: params["end_time"], total_amount: params["total_amount"], baby_id: @baby.id, user_id: current_user.id)
-            @scheme.save
-            redirect to("/babies/#{@baby.id}") 
-        else
+            if !@scheme.save
+                @errors = @scheme.errors.full_messages
+                erb :'schedules/new'
+            else 
+                redirect to to("/babies/#{@baby.id}")
+            end
+            # redirect to("/babies/#{@baby.id}") 
+        else 
             redirect to('/login')
         end
     end

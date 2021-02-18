@@ -1,6 +1,7 @@
 
 "schedules/show.erb"
 <h1>Baby's Feeding Details</h1>
+<h2></h2>
 <h2> Name: <%= @baby.name %> <br> Age: <%= @baby.age %> 
 <a href="/babies/<%= @baby.id %>/edit">Edit baby</a>
 <form action="/babies/<%= @baby.id %>/delete" method="POST">
@@ -17,7 +18,7 @@
 <% if @schedules.size > 0 %>
 <% @schedules.each do |scheme| %>
   <% if scheme.baby_id == @baby.id %>
-    <b>Start:</b> <%= scheme.start_time %>
+    <b>Start:</b> <%= scheme.start_time %><br>
     <b>End:</b> <%= scheme.end_time %><br>
     <b>Feeding Type:</b> <%= scheme.feeding_type %>
     <b>Total amount:</b> <%= scheme.total_amount %> oz <br>
