@@ -1,6 +1,6 @@
 <p>Welcome <b><%= current_user.username%></b>! </p>
 
-<h1>Click the baby to add feeding log </h1>
+<h1>Add or click your baby </h1>
 <h2></h2>
 <br>
 <ul>
@@ -8,7 +8,7 @@
 <% if @babies.size > 0 %>
     <% @babies.each do |baby| %>
         <% if baby.user_id == current_user.id %>    
-        <li><a href="babies/<%= baby.id %>"> Name: <%= baby.name %>, (Age <%= baby.age %>) </a></li>
+        <li><a href="babies/<%= baby.id %>"> Name: <%= baby.name %>, (Age: <%= baby.age %>)</a></li>
         <br>
         <% end %>
     <% end %>
