@@ -1,6 +1,6 @@
 babies/show.erb
 <h1>Baby's Feeding Details</h1>
-
+<h2></h2>
 <h2>Name: <%= @baby.name %> <br> Age: <%= @baby.age %> 
 <a href="/babies/<%= @baby.id%>/edit">Edit baby</a>
 
@@ -17,9 +17,9 @@ babies/show.erb
 <% if @schedules.size > 0 %>
 <% @schedules.each do |scheme| %>
   <% if scheme.baby_id == @baby.id %>
-    <b>Start:</b> <%= scheme.start_time %>
+    <b>Start:</b> <%= scheme.start_time %><br>
     <b>End:</b> <%= scheme.end_time %><br>
-    <b>Feeding Type:</b> <%= scheme.feeding_type %>
+    <b>Feeding Type:</b> <%= scheme.feeding_type %><br>
     <b>Total amount:</b> <%= scheme.total_amount %> oz <br>
     <a href="/babies/<%=@baby.id%>/schedules/<%= scheme.id %>/update">Update Baby Logs</a>
    <form action="/babies/<%=@baby.id%>/schedules/<%= scheme.id %>/delete" method="POST">
