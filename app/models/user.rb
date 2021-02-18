@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     has_many :babies, through: :schedules
     
     validates_presence_of :username, :email, :password
+    validates_uniqueness_of :username
     #In order for the user to be redirected after signing up, their input needs to be validated so that bad data does not get saved into the data base
     has_secure_password 
     #Password Encryption

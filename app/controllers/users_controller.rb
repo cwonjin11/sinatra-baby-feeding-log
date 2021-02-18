@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     @user = User.new(username: params["username"], email: params["email"], password: params["password"])
-    if !@user.save
+    if !@user.save 
         @errors = @user.errors.full_messages
         erb :'users/create_user'
     else 
