@@ -12,7 +12,6 @@ class BabiesController < ApplicationController
 
   get '/babies/new' do
     if logged_in?
-        # @current_user
       erb :'babies/new'
     else
       redirect to '/login'
