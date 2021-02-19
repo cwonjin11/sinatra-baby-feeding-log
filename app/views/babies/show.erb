@@ -17,11 +17,11 @@ babies/show.erb
 <% if @schedules.size > 0 %>
 <% @schedules.each do |scheme| %>
   <% if scheme.baby_id == @baby.id %>
-    <b>Start:</b> <%= scheme.start_time %><br>
-    <b>End:</b> <%= scheme.end_time %><br>
-    <b>Feeding Type:</b> <%= scheme.feeding_type %><br>
-    <b>Total amount:</b> <%= scheme.total_amount %> oz <br>
-    <a href="/babies/<%=@baby.id%>/schedules/<%= scheme.id %>/update">Update Baby Logs</a>
+    <b>* Start at :</b> <%= scheme.start_time %><br>
+    <b>* End at :</b> <%= scheme.end_time %><br>
+    <b>* Feeding Type :</b> <%= scheme.feeding_type %><br>
+    <b>* Total amount :</b> <%= scheme.total_amount %> oz <br>
+    <a href="/babies/<%=@baby.id%>/schedules/<%= scheme.id %>/update"> < Update Baby Logs > </a>
    <form action="/babies/<%=@baby.id%>/schedules/<%= scheme.id %>/delete" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE"/>
   <input type="submit" value="Delete">
@@ -31,15 +31,15 @@ babies/show.erb
    <% end %>
   <% end %>
   <%else%>
-    <p>No logs for this baby. <a href="/babies/<%=@baby.id%>/schedules/new">Add Baby Logs </a>.</p>
+    <p>No logs for this baby. <a href="/babies/<%=@baby.id%>/schedules/new"> < Add Baby Logs > </a>.</p>
  
 <% end %>
 
 <br>
 
-<a href="/babies/<%= @baby.id %>/schedules/new">Add Baby Logs</a>
+<a href="/babies/<%= @baby.id %>/schedules/new"> < Add Baby Logs > </a>
 
-<a href="/babies">View All babies</a>
+<a href="/babies"> < View All babies > </a>
 
 
 </ul>

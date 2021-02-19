@@ -18,10 +18,10 @@
 <% if @schedules.size > 0 %>
 <% @schedules.each do |scheme| %>
   <% if scheme.baby_id == @baby.id %>
-    <b>Start:</b> <%= scheme.start_time %><br>
-    <b>End:</b> <%= scheme.end_time %><br>
-    <b>Feeding Type:</b> <%= scheme.feeding_type %>
-    <b>Total amount:</b> <%= scheme.total_amount %> oz <br>
+    <b>* Start at :</b> <%= scheme.start_time %><br>
+    <b>* End at :</b> <%= scheme.end_time %><br>
+    <b>* Feeding Type :</b> <%= scheme.feeding_type %>
+    <b>* Total amount :</b> <%= scheme.total_amount %> oz <br>
     <a href="/schedules/<%= scheme.id %>/update">Update Baby Logs</a>
    <br><br>
    <% end %>
