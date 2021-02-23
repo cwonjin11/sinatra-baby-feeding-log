@@ -5,7 +5,7 @@ class BabiesController < ApplicationController
         @babies = Baby.all
         erb :'babies/index'
     else
-        redirect '/login'
+        redirect to('/login')
     end
   end
 
@@ -14,7 +14,7 @@ class BabiesController < ApplicationController
     if logged_in?
       erb :'babies/new'
     else
-      redirect to '/login'
+      redirect to('/login')
     end
   end
 
@@ -26,7 +26,7 @@ class BabiesController < ApplicationController
         @errors = @baby.errors.full_messages
         erb :'/babies/new'
       else
-        redirect to "/babies" 
+        redirect to("/babies") 
       end
     else
       redirect to('/login')

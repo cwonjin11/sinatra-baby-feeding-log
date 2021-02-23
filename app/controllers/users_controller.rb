@@ -3,7 +3,7 @@ class UsersController < ApplicationController
       if !session[:user_id]
           erb :'users/create_user'
       else
-        redirect '/babies'
+        redirect to('/babies')
       end
     end
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         erb :'users/create_user'
     else 
         session[:user_id] = @user.id
-        redirect '/babies'
+        redirect to('/babies')
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if !session[:user_id]
         erb :'users/login'
     else
-        redirect '/babies'
+        redirect to('/babies')
     end
   end
   
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect '/babies'
+        redirect to('/babies')
       else
         @errors = "Authentication Error. Please check username and/or password and try again."
         erb :'users/login'
@@ -44,9 +44,9 @@ class UsersController < ApplicationController
   get '/logout' do
       if logged_in?
           session.clear
-          redirect '/'
+          redirect to('/')
       else
-          redirect '/'
+          redirect to('/')
       end
   end
 
