@@ -48,10 +48,12 @@ class SchedulesController < ApplicationController
     patch '/babies/:baby_id/schedules/:id' do
         @scheme = Schedule.find(params[:id])
         @baby = Baby.find(@scheme.baby_id)
+        if logged_in? && @baby.user_id == current_user.id && current_user.id == @scheme.user_id
         @scheme.feeding_type = params[:feeding_type]
         @scheme.start_time = params[:start_time]
         @scheme.end_time = params[:end_time]
         @scheme.total_amount = params[:total_amount]
+        end
         if !@scheme.save
           @errors = @scheme.errors.full_messages
           erb :'/schedules/update'
