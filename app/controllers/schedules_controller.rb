@@ -23,7 +23,6 @@ class SchedulesController < ApplicationController
             else 
                 redirect to to("/babies/#{@baby.id}")
             end
-             
         else 
             redirect to("/babies/#{@baby.id}")
         end
